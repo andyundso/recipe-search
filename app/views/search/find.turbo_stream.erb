@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "search_results" do %>
+  <%= turbo_frame_tag "search_results" do %>
+    <% @recipes.each do |recipe| %>
+      <%= recipe.name %>
+    <% end %>
+  <% end %>
+<% end %>
