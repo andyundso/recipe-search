@@ -2,10 +2,14 @@
 
 <%= form_with url: find_search_index_path do |f| %>
   <%= f.label :included, "I'm really in for ..." %>
-  <%= f.select :included, Ingredient.order(:name).pluck(:name), { include_blank: true }, { multiple: true } %>
+  <div data-controller='tom-select'>
+    <%= f.select :included, Ingredient.order(:name).pluck(:name), { include_blank: true }, { multiple: true } %>
+  </div>
 
   <%= f.label :excluded, "Go away with ..." %>
-  <%= f.select :excluded, Ingredient.order(:name).pluck(:name), { include_blank: true }, { multiple: true } %>
+  <div data-controller='tom-select'>
+    <%= f.select :excluded, Ingredient.order(:name).pluck(:name), { include_blank: true }, { multiple: true, data: { controller: 'tom-select' } } %>
+  </div>
 
   <%= f.submit "Get me some ideas!" %>
 <% end %>
