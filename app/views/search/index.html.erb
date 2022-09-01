@@ -1,17 +1,17 @@
-<%= turbo_stream_from "get_good" %>
+<%= form_with url: find_search_index_path, class: "w-full" do |f| %>
+  <div class="flex space-x-4 w-full">
+    <div class="w-1/2" data-controller='tom-select'>
+      <%= f.label :included, "I'm really in for ..." %>
+      <%= f.select :included, Ingredient.order(:name).pluck(:name), { include_blank: true }, { multiple: true } %>
+    </div>
 
-<%= form_with url: find_search_index_path do |f| %>
-  <%= f.label :included, "I'm really in for ..." %>
-  <div data-controller='tom-select'>
-    <%= f.select :included, Ingredient.order(:name).pluck(:name), { include_blank: true }, { multiple: true } %>
+    <div class="w-1/2" data-controller='tom-select'>
+      <%= f.label :excluded, "Go away with ..." %>
+      <%= f.select :excluded, Ingredient.order(:name).pluck(:name), { include_blank: true }, { multiple: true, data: { controller: 'tom-select' } } %>
+    </div>
   </div>
 
-  <%= f.label :excluded, "Go away with ..." %>
-  <div data-controller='tom-select'>
-    <%= f.select :excluded, Ingredient.order(:name).pluck(:name), { include_blank: true }, { multiple: true, data: { controller: 'tom-select' } } %>
-  </div>
-
-  <%= f.submit "Get me some ideas!" %>
+  <button class="bg-gray-200 hover:bg-gray-500 text-gray-700 font-bold py-2 px-4 my-4 rounded" >Get me some ideas!</button>
 <% end %>
 
-<%= turbo_frame_tag "search_results" %>
+<%= turbo_frame_tag "search_results", class: "w-full" %>
