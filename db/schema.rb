@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_01_120814) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_01_132942) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_120814) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "thumbnail", default: "https://i.insider.com/602ee9ced3ad27001837f2ac?width=700", null: false
   end
 
 end

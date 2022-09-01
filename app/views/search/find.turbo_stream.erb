@@ -1,7 +1,23 @@
 <%= turbo_stream.replace "search_results" do %>
   <%= turbo_frame_tag "search_results" do %>
     <% @recipes.each do |recipe| %>
-      <%= recipe.name %>
+      <div class="my-4 flex w-full space-x-4">
+        <div class="w-32">
+          <img src="<%= recipe.thumbnail %>" alt="<%= recipe.name %>"/>
+        </div>
+
+        <div class="w-2/5">
+          <a class="text-blue-500" href="<%= recipe.url %>"><%= recipe.name %></a>
+        </div>
+
+        <div class="w-2/5">
+          <ul>
+            <% recipe.ingredients.each do |ingredient| %>
+              <li><%= ingredient.name %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     <% end %>
   <% end %>
 <% end %>

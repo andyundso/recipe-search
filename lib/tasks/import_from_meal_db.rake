@@ -17,6 +17,7 @@ namespace :meal_db do
             name: meal_db_recipe['strMeal'].downcase
           )
           recipe.url = meal_db_recipe['strSource']
+          recipe.thumbnail = meal_db_recipe['strMealThumb']
           recipe.save!
 
           (1..20).each do |number|
